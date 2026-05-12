@@ -1,0 +1,36 @@
+{% extends 'jobs/base.html' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="fw-bold mb-4"><i class="bi bi-plus-circle"></i> Post a New Job</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Job Title</label>
+                            {{ form.title }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Company Name</label>
+                            {{ form.company }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Location</label>
+                            {{ form.location }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Job Description</label>
+                            {{ form.description }}
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary">Post Job</button>
+                            <a href="{% url 'employer_dashboard' %}" class="btn btn-outline-secondary">← Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

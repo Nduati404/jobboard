@@ -1,0 +1,33 @@
+{% extends 'jobs/base.html' %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4">
+                    <h2 class="fw-bold text-center mb-4"><i class="bi bi-lock"></i> Login</h2>
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Username</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Password</label>
+                            {{ form.password }}
+                        </div>
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                Invalid username or password. Please try again.
+                            </div>
+                        {% endif %}
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <a href="{% url 'register' %}" class="btn btn-outline-secondary">Don't have an account? Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
